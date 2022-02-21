@@ -9,3 +9,4 @@ Some scripts which I think are useful.
 ## Overview
 
 - wmi-PS (wmi password spraying)
+- gitlab-RCE (CVE-2021-22205)
