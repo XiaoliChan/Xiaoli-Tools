@@ -1,9 +1,11 @@
 # Xiaoli-Tools
 
+Some scripts which I think are useful.
+
 # Table of content
 
 * [Overview](#overview)
 
 ## Overview
 
-Some scripts
+- wmi-PS (wmi password spraying)
