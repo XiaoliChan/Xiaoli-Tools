@@ -2,7 +2,7 @@ id: ecshop-sqli
 
 info:
   name: Ecshop SQLi
-  author: Lark-lab,ImNightmaree
+  author: xiaoli
   severity: high
   description: A vulnerability in Ecshop allows remote unauthenticated users to inject arbitrary SQL statements into via the 'Referer' header field.
   reference:
