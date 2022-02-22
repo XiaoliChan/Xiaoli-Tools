@@ -1,6 +1,6 @@
 # Xiaoli-Tools
 
-Some scripts which I think are useful.
+Some scripts and Nuclei templates which I think are useful.
 
 # Table of content
 
