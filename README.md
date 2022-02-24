@@ -11,3 +11,5 @@ Some scripts and Nuclei templates which I think are useful.
 - wmi-PS (wmi password spraying)
 - gitlab-RCE (CVE-2021-22205)
 - ecshop
+- addcomputer-dpersist (with domain persistence option)
+- sunlogin-fuzz (sunlogin remote desktop toolset RCE)
