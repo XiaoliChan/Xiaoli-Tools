@@ -601,7 +601,7 @@ if __name__ == '__main__':
                                                                                 'SAMR works over SMB.'
                                                                                 'LDAPS has some certificate requirements'
                                                                                 'and isn\'t always available.')
-    parser.add_argument('-dpersist', action='store_true', help='Add computer account for domain persistence. Required domain admins permissionss')
+    parser.add_argument('-dpersist', action='store_true', help='Add computer account for domain persistence. Required domain admin privileges')
 
     parser.add_argument('-port', type=int, choices=[139, 445, 636],
                        help='Destination port to connect to. SAMR defaults to 445, LDAPS to 636.')
