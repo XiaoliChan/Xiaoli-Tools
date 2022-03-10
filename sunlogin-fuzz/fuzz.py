@@ -47,7 +47,7 @@ def curl(host_WithPort):
 
 def fuzz_sunloginPort(target):
     print("[*] %s\tFuzzing sunlogin port" % target)
-    process = Popen("nmap -Ss -p 10000-65535 --min-rate=10000 -T5 %s" % target, stdout=PIPE, stderr=None, shell=True)
+    process = Popen("nmap -Pn -sS -p 10000-65535 --min-rate=10000 -T5 %s" % target, stdout=PIPE, stderr=None, shell=True)
     ports_raw = process.communicate()[0].decode("utf-8",errors="ignore")
     ports = reg.findall("([\d]+/tcp)",ports_raw)
     for i in range(len(ports)):
