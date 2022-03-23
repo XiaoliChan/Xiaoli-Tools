@@ -1,2 +1,2 @@
 ## Overviewx
-- Convert AWVS report webpage to hunman grabbable form(xlsx file).
+- Convert AWVS report webpage to human grabbable form(xlsx file).
